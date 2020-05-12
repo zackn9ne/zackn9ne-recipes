@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Identifier</key>
+	<string>local.jss.CloudApp</string>
+	<key>Input</key>
+	<dict>
+		<key>BUNDLE_ID</key>
+		<string>uk.co.dataJAR.CloudApp</string>
+		<key>CATEGORY</key>
+		<string>Autopkg</string>
+		<key>GROUP_NAME</key>
+		<string>update-smart-%NAME%</string>
+		<key>GROUP_TEMPLATE</key>
+		<string>%RECIPE_DIR%/SmartGroupTemplateAutopatch.xml</string>
+		<key>NAME</key>
+		<string>CloudApp</string>
+		<key>SOFTWARETITLE</key>
+		<string>CloudApp</string>
+		<key>prod_name</key>
+		<string>CloudApp</string>
+		<key>PROD_NAME</key>
+		<string>CloudApp</string>
+		<key>POLICY_CATEGORY</key>
+		<string>Autopkg</string>
+		<key>POLICY_TEMPLATE</key>
+		<string>%RECIPE_DIR%/PolicyTemplateAutopatch2.xml</string>
+		<key>BETA_GROUP_NAME</key>
+		<string>update-smart-%NAME%-beta</string>
+		<key>BETA_GROUP_TEMPLATE</key>
+		<string>%RECIPE_DIR%/SmartGroupTemplateBetapatch.xml</string>
+		<key>SELFSERVPOLICY_CATEGORY</key>
+		<string>Misc. Apps</string>
+		<key>SELFSERVPOLICY_TEMPLATE</key>
+		<string>%RECIPE_DIR%/PolicyTempalteSelfServe.beta.xml</string>
+		<key>SELF_SERVICE_DESCRIPTION</key>
+		<string>CloudApp screen recorder software for Mac and PC. Record video, webcam, GIFs, capture your screen and share it instantly to the cloud</string>
+		<key>SELF_SERVICE_ICON</key>
+		<string>%NAME%.png</string>
+		<key>SPARKLE_FEED_URL</key>
+		<string>https://d2plwz9jdz9z5d.cloudfront.net/mac/latest/appcast.xml</string>
+	</dict>
+
+
+
+
+	<key>MinimumVersion</key>
+	<string>1.0.4</string>
+	<key>ParentRecipe</key>
+	<string>com.github.dataJAR-recipes.pkg.CloudApp</string>
+	
+	<key>Process</key>
+	<array>
+<!-- dict1 -->
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>category</key>
+				<string>%CATEGORY%</string>
+<!-- groups are nested or recursion mess not related to policy -->
+				<key>groups</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>%GROUP_NAME%</string>
+						<key>smart</key>
+						<true/>
+						<key>template_path</key>
+						<string>%GROUP_TEMPLATE%</string>
+					</dict>
+				</array>
+				<key>policy_category</key>
+				<string>%POLICY_CATEGORY%</string>
+				<key>policy_template</key>
+				<string>%POLICY_TEMPLATE%</string>
+				<key>prod_name</key>
+				<string>%NAME%</string>
+				<key>self_service_description</key>
+				<string>%SELF_SERVICE_DESCRIPTION%</string>
+				<key>self_service_icon</key>
+				<string>%SELF_SERVICE_ICON%</string>
+			</dict>
+			<key>Processor</key>
+			<string>JSSImporter</string>
+		</dict>
+<!-- dict2 -->
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>groups</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>%BETA_GROUP_NAME%</string>
+						<key>smart</key>
+						<true/>
+						<key>template_path</key>
+						<string>%BETA_GROUP_TEMPLATE%</string>
+					</dict>
+				</array>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>policy_category</key>
+				<string>%SELFSERVPOLICY_CATEGORY%</string>
+				<key>policy_template</key>
+				<string>%SELFSERVPOLICY_TEMPLATE%</string>
+				<key>prod_name</key>
+				<string>%PROD_NAME%</string>
+				<key>self_service_description</key>
+				<string>%SELF_SERVICE_DESCRIPTION%</string>
+				<key>self_service_icon</key>
+				<string>%SELF_SERVICE_ICON%</string>
+				<key>version</key>
+				<string>%version%</string>
+			</dict>
+			<key>Comment</key>
+			<string>Self Service install policy, also makes a beta group but unrelated</string>
+			<key>Processor</key>
+			<string>JSSImporter</string>
+		</dict>
+	</array>
+	
+	
+
+
+
+
+</dict>
+</plist>
+
+
+

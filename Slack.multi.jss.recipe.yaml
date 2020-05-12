@@ -1,0 +1,64 @@
+Description: Downloads the latest version of Slack and makes a pkg of it Then, uploads to the Jamf Pro Server.
+Identifier: com.github.killahquam.jss.slack
+Input:
+  BETA_GROUP_NAME: update-smart-%NAME%-beta
+  BETA_GROUP_TEMPLATE: '%RECIPE_DIR%/SmartGroupTemplateBetapatch.xml'
+  CATEGORY: Misc. Apps
+  GROUP_NAME: update-smart-%NAME%
+  GROUP_TEMPLATE: SmartGroupTemplateAutopatch.xml
+  NAME: Slack
+  POLICY_CATEGORY: Autopkg
+  POLICY_TEMPLATE: PolicyTemplateAutopatch2.xml
+  PROD_NAME: '%NAME%'
+  SELFSERVPOLICY_CATEGORY: Misc. Apps
+  SELFSERVPOLICY_TEMPLATE: '%RECIPE_DIR%/PolicyTempalteSelfServe.beta.xml'
+  SELF_SERVICE_DESCRIPTION: ''
+  SELF_SERVICE_ICON: Slack.png
+  SOFTWARETITLE: '%NAME%'
+MinimumVersion: 0.2.0
+ParentRecipe: com.github.killahquam.pkg.slack
+Process:
+- Arguments:
+    category: '%CATEGORY%'
+    groups:
+    - name: '%GROUP_NAME%'
+      smart: true
+      template_path: '%GROUP_TEMPLATE%'
+    policy_category: '%POLICY_CATEGORY%'
+    policy_template: ''
+    prod_name: '%NAME%'
+    self_service_description: '%SELF_SERVICE_DESCRIPTION%'
+    self_service_icon: '%SELF_SERVICE_ICON%'
+  Comment: Group only
+  Processor: JSSImporter
+- Arguments:
+    category: '%CATEGORY%'
+    groups:
+    - name: '%BETA_GROUP_NAME%'
+      smart: true
+      template_path: '%BETA_GROUP_TEMPLATE%'
+    policy_category: '%POLICY_CATEGORY%'
+    policy_template: ''
+    prod_name: '%NAME%'
+    self_service_description: '%SELF_SERVICE_DESCRIPTION%'
+    self_service_icon: '%SELF_SERVICE_ICON%'
+  Comment: Beta Group only
+  Processor: JSSImporter
+- Arguments:
+    category: '%CATEGORY%'
+    policy_category: '%POLICY_CATEGORY%'
+    policy_template: '%POLICY_TEMPLATE%'
+    prod_name: '%NAME%'
+    self_service_description: '%SELF_SERVICE_DESCRIPTION%'
+    self_service_icon: '%SELF_SERVICE_ICON%'
+  Processor: JSSImporter
+- Arguments:
+    pkg_path: '%pkg_path%'
+    policy_category: '%SELFSERVPOLICY_CATEGORY%'
+    policy_template: '%SELFSERVPOLICY_TEMPLATE%'
+    prod_name: '%NAME%'
+    self_service_description: '%SELF_SERVICE_DESCRIPTION%'
+    self_service_icon: '%SELF_SERVICE_ICON%'
+    version: '%version%'
+  Comment: Self Service install policy, also makes a beta group but unrelated
+  Processor: JSSImporter

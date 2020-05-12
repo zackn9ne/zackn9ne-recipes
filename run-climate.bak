@@ -1,0 +1,45 @@
+#!/bin/sh
+#mass patching by zackn9ne
+#set your ENV HERE, set your RECIPIES, set your .plist or .json
+ENV="climate"
+
+LOGFILE="/Users/test/Desktop/Autopkgr-Overrides/logs/run-$ENV.log"
+if [ -e "$LOGFILE" ]
+      then
+	echo "$LOGFILE Exists"
+   else
+	echo "Creating $LOGFILE"
+	touch $LOGFILE
+fi
+
+exec 3>&1 4>&2
+trap 'exec 2>&4 1>&3' 0 1 2 3
+exec 1>$LOGFILE 2>&1
+
+echo "started run: $(date)" 
+
+/Library/AutoPkg/autopkg run -vv --post 'io.github.hjuutilainen.VirusTotalAnalyzer/VirusTotalAnalyzer' \
+office/Excel365.recipe \
+office/Outlook365.recipe \
+office/PowerPoint365.recipe \
+office/Word365.recipe \
+apps/Chrome.recipe \
+apps/Slack.recipe \
+apps/Dropbox.recipe \
+apps/Firefox.recipe \
+apps/Zoom.recipe \
+apps/Filestream.recipe \
+--prefs /Users/test/Desktop/Autopkgr-Prefs/$ENV.json \
+--key STOP_IF_NO_JSS_UPLOAD=False
+
+echo "finished run: $(date)"
+#office/PowerPoint365.recipe \
+#office/Word365.recipe \
+#apps/Slack.recipe
+#apps/Zoom.recipe
+#apps/Firefox.recipe
+#apps/Drive.recipe
+#apps/Dropbox.recipe
+#apps/Chrome.recipe
+#
+#

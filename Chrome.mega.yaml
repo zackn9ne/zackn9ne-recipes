@@ -1,0 +1,34 @@
+Identifier: local.jss.Google Chrome
+Input:
+  BETA_GROUP_NAME: update-smart-%NAME%-beta
+  BETA_GROUP_TEMPLATE: '%RECIPE_DIR%/SmartGroupTemplateBetapatch.xml'
+  CATEGORY: Autopkg
+  DOWNLOAD_URL: https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+  GROUP_NAME: Update-Smart-%NAME%
+  GROUP_TEMPLATE: '%RECIPE_DIR%/SmartGroupTemplateAutopatch.xml'
+  NAME: Google Chrome
+  OS_REQUIREMENTS: 10.15.x,10.14.x,10.13.x,10.12.x,10.11.x,10.10.x
+  POLICY_CATEGORY: Autopkg
+  POLICY_TEMPLATE: '%RECIPE_DIR%/PolicyTemplateAutopatch2.xml'
+  SELFSERVPOLICY_CATEGORY: Misc. Apps
+  SELFSERVPOLICY_TEMPLATE: '%RECIPE_DIR%/PolicyTempalteSelfServe.beta.xml'
+  SELF_SERVICE_DESCRIPTION: Google Chrome is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.
+  SELF_SERVICE_ICON: Google Chrome.png
+  SOFTWARETITLE: Chrome
+MinimumVersion: 1.0.4
+ParentRecipe: com.github.jss-recipes.pkg.GoogleChrome
+Process:
+- Arguments:
+    groups:
+    - name: '%BETA_GROUP_NAME%'
+      smart: true
+      template_path: '%BETA_GROUP_TEMPLATE%'
+    pkg_path: '%pkg_path%'
+    policy_category: '%SELFSERVPOLICY_CATEGORY%'
+    policy_template: '%SELFSERVPOLICY_TEMPLATE%'
+    prod_name: '%NAME%'
+    self_service_description: '%SELF_SERVICE_DESCRIPTION%'
+    self_service_icon: '%SELF_SERVICE_ICON%'
+    version: '%version%'
+  Comment: Self Service install policy, also makes a beta group but unrelated
+  Processor: JSSImporter

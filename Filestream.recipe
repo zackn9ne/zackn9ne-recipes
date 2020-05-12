@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Identifier</key>
+	<string>local.jss.AU-GoogleDriveFileStream</string>
+	<key>Input</key>
+	<dict>
+		<key>CATEGORY</key>
+		<string>Patches</string>
+		<key>DESCRIPTION</key>
+		<string>With Drive File Stream, you stream your Drive files directly from the cloud to your Mac or PC, freeing up disk space and network bandwidth.  Because Drive files are stored in the cloud, any changes you or your collaborators make are automatically updated everywhere, so you’ll always have the latest version.  You can also make Drive files available for offline access.  These cached files sync to the cloud and all your devices when you're back online.
+
+With Drive File Stream, you can:
+  * Quickly see all your Google Drive files in Finder/Explorer (including Team Drives).
+  * Browse and organize Google Drive files without downloading all of them to your computer.
+  * Choose which files or folders you'd like to make available offline.
+  * Open files in common apps like Microsoft Office and Adobe Photoshop.
+
+Drive File Stream is only usable with G-Suite accounts.</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://dl.google.com/drive-file-stream/GoogleDriveFileStream.dmg</string>
+		<key>GROUP_NAME</key>
+		<string>%NAME%-Testing</string>
+		<key>GROUP_TEMPLATE</key>
+		<string>.\SmartGroupTemplateAutopatch.xml</string>
+		<key>ICON</key>
+		<string>%RECIPE_DIR%/GoogleDriveFileStream.png</string>
+		<key>NAME</key>
+		<string>Google Drive File Stream</string>
+		<key>POLICY_CATEGORY</key>
+		<string>%CATEGORY%</string>
+		<key>POLICY_TEMPLATE</key>
+		<string>.\PolicyTemplateAutopatch.xml</string>
+		<key>os_requirements</key>
+		<string>10.15.x,10.14.x,10.13.x,10.12.x,10.11.x</string>
+		<key>package_notes</key>
+		<string>Product of AutoPkg</string>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.mlbz521.jss.GoogleDriveFileStream</string>
+	<key>ParentRecipeTrustInfo</key>
+	<dict>
+		<key>non_core_processors</key>
+		<dict/>
+		<key>parent_recipes</key>
+		<dict>
+			<key>com.github.mlbz521.download.GoogleDriveFileStream</key>
+			<dict>
+				<key>git_hash</key>
+				<string>c91520d6c274436394ed88293e144b8e1f2fc72c</string>
+				<key>path</key>
+				<string>~/Library/AutoPkg/RecipeRepos/com.github.autopkg.MLBZ521-recipes/Google Drive FileStream/GoogleDriveFileStream.download.recipe</string>
+				<key>sha256_hash</key>
+				<string>3f1ed6753a58504244d3778242a6cae86781483ae2cc321f79ac0f727f853a4a</string>
+			</dict>
+			<key>com.github.mlbz521.jss.GoogleDriveFileStream</key>
+			<dict>
+				<key>git_hash</key>
+				<string>4a847c38ab778ec1790825951806c46d575e89eb</string>
+				<key>path</key>
+				<string>~/Library/AutoPkg/RecipeRepos/com.github.autopkg.MLBZ521-recipes/Google Drive FileStream/GoogleDriveFileStream.jss.recipe</string>
+				<key>sha256_hash</key>
+				<string>7cc88239f35243db013aec2db74473c0accc863d2ab90bc25d32014893d58e98</string>
+			</dict>
+			<key>com.github.mlbz521.pkg.GoogleDriveFileStream</key>
+			<dict>
+				<key>git_hash</key>
+				<string>9b39c00c5cbe9a3ffee4b7f11be9f6ded7a028ac</string>
+				<key>path</key>
+				<string>~/Library/AutoPkg/RecipeRepos/com.github.autopkg.MLBZ521-recipes/Google Drive FileStream/GoogleDriveFileStream.pkg.recipe</string>
+				<key>sha256_hash</key>
+				<string>34d659fcf31aa223fc904564584f513934cfb6d9d402a02a971c0f4c5f82a920</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Identifier</key>
+	<string>local.jss.DriveFS</string>
+	<key>Input</key>
+	<dict>
+		<key>CATEGORY</key>
+		<string>Patches</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://dl.google.com/drive-file-stream/googledrivefilestream.dmg</string>
+		<key>GROUP_NAME</key>
+		<string>Image-Smart-%NAME%</string>
+		<key>GROUP_TEMPLATE</key>
+		<string>%RECIPE_DIR%/SmartGroupImage.xml</string>
+		<key>NAME</key>
+		<string>Google Drive File Stream</string>
+		<key>POLICY_CATEGORY</key>
+		<string>Imaging</string>
+		<key>POLICY_TEMPLATE</key>
+		<string>%RECIPE_DIR%/PolicyTemplateImaging.xml</string>
+		<key>SOFTWARETITLE</key>
+		<string>Filestream</string>
+		<key>SELF_SERVICE_DESCRIPTION</key>
+		<string></string>
+		<key>SELF_SERVICE_ICON</key>
+		<string>%NAME%.png</string>
+		<key>STOPPROCESSINGIF_PREDICATE</key>
+		<string>download_changed == False</string>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.crystalllized.jss.googledrivefs</string>
+	<key>ParentRecipeTrustInfo</key>
+	<dict>
+		<key>non_core_processors</key>
+		<dict/>
+		<key>parent_recipes</key>
+		<dict>
+			<key>com.github.crystallized.download.googledrivefs</key>
+			<dict>
+				<key>git_hash</key>
+				<string>89455a46ca84f15363b4edd90c39ecd9be3070a0</string>
+				<key>path</key>
+				<string>~/Library/AutoPkg/RecipeRepos/com.github.autopkg.crystalllized-recipes/Google Drive File Stream/DriveFS.download.recipe</string>
+				<key>sha256_hash</key>
+				<string>d07c43c0b034ef2573d245322c29db9e1328e03fd20f6485348a35ab985dd9fa</string>
+			</dict>
+			<key>com.github.crystalllized.jss.googledrivefs</key>
+			<dict>
+				<key>git_hash</key>
+				<string>63d4e70a53e9416202080ac57e7c8827551d65c8</string>
+				<key>path</key>
+				<string>~/Library/AutoPkg/RecipeRepos/com.github.autopkg.crystalllized-recipes/Google Drive File Stream/DriveFS.jss.recipe</string>
+				<key>sha256_hash</key>
+				<string>b48268f2a7b8ecf7e1a65936e9baf26ea748e0dc0c237001d686e92816d5109a</string>
+			</dict>
+			<key>com.github.crystalllized.pkg.googledrivefs</key>
+			<dict>
+				<key>git_hash</key>
+				<string>b2061d963a463a4e453283879a3f75fe00d8522c</string>
+				<key>path</key>
+				<string>~/Library/AutoPkg/RecipeRepos/com.github.autopkg.crystalllized-recipes/Google Drive File Stream/DriveFS.pkg.recipe</string>
+				<key>sha256_hash</key>
+				<string>c16bbbf875af1212573e46c4fc313bc1e4ffa100baca2804b629c59db0be9edd</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>
