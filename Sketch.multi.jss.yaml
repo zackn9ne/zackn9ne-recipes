@@ -1,0 +1,78 @@
+Identifier: local.jss.Sketch
+Input:
+  BETA_GROUP_NAME: update-smart-%NAME%-beta
+  BETA_GROUP_TEMPLATE: '%RECIPE_DIR%/SmartGroupTemplateBetapatch.xml'
+  CATEGORY: Productivity
+  GROUP_NAME: Update-Smart-%NAME%
+  GROUP_TEMPLATE: SmartGroupTemplateAutopatch.xml
+  NAME: Sketch
+  OS_REQUIREMENTS: 10.15.x,10.14.x,10.13.6,10.13.5,10.13.4
+  POLICY_CATEGORY: Autopkg
+  POLICY_TEMPLATE: PolicyTemplateAutopatch2.xml
+  POLICY_TEMPLATE: '%RECIPE_DIR%/PolicyTemplateAutopatch2.xml'
+  SELFSERVPOLICY_CATEGORY: '*Updates for You*'
+  SELFSERVPOLICY_TEMPLATE: '%RECIPE_DIR%/PolicyTemplateSelfServe.all.xml'
+  SELFSERVPOLICYBETA_CATEGORY: '*Updates For Testers*'
+  SELFSERVPOLICYBETA_TEMPLATE: '%RECIPE_DIR%/PolicyTemplateSelfServe.beta.xml'
+  SELF_SERVICE_DESCRIPTION: Vector drawing application.
+  SELF_SERVICE_ICON: '%NAME%.png'
+  SOFTWARETITLE: Sketch
+  SPARKLE_FEED_URL: https://www.sketchapp.com/appcast3.xml
+  USER_AGENT: Sketch/3.3.2 Sparkle/e759c10
+MinimumVersion: 1.0.4
+ParentRecipe: com.github.homebysix.pkg.Sketch
+Process:
+- Arguments:
+    category: '%CATEGORY%'
+    groups:
+    - name: '%GROUP_NAME%'
+      smart: true
+      template_path: '%GROUP_TEMPLATE%'
+    policy_category: '%POLICY_CATEGORY%'
+    policy_template: '%POLICY_TEMPLATE%'
+    prod_name: '%NAME%'
+    self_service_description: '%SELF_SERVICE_DESCRIPTION%'
+    self_service_icon: '%SELF_SERVICE_ICON%'
+  Processor: JSSImporter
+- Arguments:
+    groups:
+    - name: '%BETA_GROUP_NAME%'
+      smart: true
+      template_path: '%BETA_GROUP_TEMPLATE%'
+    pkg_path: '%pkg_path%'
+    policy_category: '%SELFSERVPOLICY_CATEGORY%'
+    policy_template: ''
+    prod_name: '%NAME%'
+    self_service_description: '%SELF_SERVICE_DESCRIPTION%'
+    self_service_icon: '%SELF_SERVICE_ICON%'
+    version: '%version%'
+  Comment: just a beta group but unrelated
+  Processor: JSSImporter
+- Arguments:
+    groups:
+    - name: '%BETA_GROUP_NAME%'
+      smart: true
+      template_path: ''
+    pkg_path: '%pkg_path%'
+    policy_category: '%SELFSERVPOLICY_CATEGORY%'
+    policy_template: '%SELFSERVPOLICY_TEMPLATE%'
+    prod_name: '%NAME%'
+    self_service_description: '%SELF_SERVICE_DESCRIPTION%'
+    self_service_icon: '%SELF_SERVICE_ICON%'
+    version: '%version%'
+  Comment: Self Service install policy for all, group is nulled
+  Processor: JSSImporter
+- Arguments:
+    groups:
+    - name: '%BETA_GROUP_NAME%'
+      smart: true
+      template_path: ''
+    pkg_path: '%pkg_path%'
+    policy_category: '%SELFSERVPOLICYBETA_CATEGORY%'
+    policy_template: '%SELFSERVPOLICYBETA_TEMPLATE%'
+    prod_name: '%NAME%'
+    self_service_description: '%SELF_SERVICE_DESCRIPTION%'
+    self_service_icon: '%SELF_SERVICE_ICON%'
+    version: '%version%'
+  Comment: Self Service install policy for testers only, group is nulled 
+  Processor: JSSImporter

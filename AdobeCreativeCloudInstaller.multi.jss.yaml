@@ -1,0 +1,76 @@
+Identifier: local.jss.AdobeCreativeCloudInstaller
+Input:
+  BETA_GROUP_NAME: update-smart-%NAME%-beta
+  BETA_GROUP_TEMPLATE: '%RECIPE_DIR%/SmartGroupTemplateBetapatch.xml'
+  CATEGORY: Autopkg
+  GROUP_NAME: Update-Smart-%NAME%
+  GROUP_TEMPLATE: '%RECIPE_DIR%/SmartGroupTemplateAutopatch.xml'
+  NAME: Creative Cloud
+  POLICY_CATEGORY: Autopkg
+  POLICY_TEMPLATE: '%RECIPE_DIR%/PolicyTemplateAutopatch2.xml'
+  SEARCH_PATTERN: (?P<url>https://ccmdl.adobe.com/AdobeProducts/KCCC/CCD/.*?/osx10/ACCC.*?.dmg)
+  SEARCH_URL: https://helpx.adobe.com/download-install/kb/creative-cloud-desktop-app-download.html
+  SELFSERVPOLICY_CATEGORY: '*Updates for You*'
+  SELFSERVPOLICY_TEMPLATE: '%RECIPE_DIR%/PolicyTemplateSelfServe.all.xml'
+  SELFSERVPOLICYBETA_CATEGORY: '*Updates For Testers*'
+  SELFSERVPOLICYBETA_TEMPLATE: '%RECIPE_DIR%/PolicyTemplateSelfServe.beta.xml'
+  SELF_SERVICE_DESCRIPTION: Access Adobe apps from the cloud with a monthly fee.
+  SELF_SERVICE_ICON: AdobeCreativeCloudInstaller.png
+  SOFTWARETITLE: AdobeCC
+  VENDOR: Adobe
+ParentRecipe: com.github.rtrouton.pkg.AdobeCreativeCloudInstaller
+Process:
+- Arguments:
+    category: '%CATEGORY%'
+    groups:
+    - name: '%GROUP_NAME%'
+      smart: true
+      template_path: '%GROUP_TEMPLATE%'
+    policy_category: '%POLICY_CATEGORY%'
+    policy_template: '%POLICY_TEMPLATE%'
+    prod_name: '%NAME%'
+    self_service_description: '%SELF_SERVICE_DESCRIPTION%'
+    self_service_icon: '%SELF_SERVICE_ICON%'
+  Processor: JSSImporter
+- Arguments:
+    groups:
+    - name: '%BETA_GROUP_NAME%'
+      smart: true
+      template_path: '%BETA_GROUP_TEMPLATE%'
+    pkg_path: '%pkg_path%'
+    policy_category: '%SELFSERVPOLICY_CATEGORY%'
+    policy_template: ''
+    prod_name: '%NAME%'
+    self_service_description: '%SELF_SERVICE_DESCRIPTION%'
+    self_service_icon: '%SELF_SERVICE_ICON%'
+    version: '%version%'
+  Comment: just a beta group but unrelated
+  Processor: JSSImporter
+- Arguments:
+    groups:
+    - name: '%BETA_GROUP_NAME%'
+      smart: true
+      template_path: ''
+    pkg_path: '%pkg_path%'
+    policy_category: '%SELFSERVPOLICY_CATEGORY%'
+    policy_template: '%SELFSERVPOLICY_TEMPLATE%'
+    prod_name: '%NAME%'
+    self_service_description: '%SELF_SERVICE_DESCRIPTION%'
+    self_service_icon: '%SELF_SERVICE_ICON%'
+    version: '%version%'
+  Comment: Self Service install policy for all, group is nulled
+  Processor: JSSImporter
+- Arguments:
+    groups:
+    - name: '%BETA_GROUP_NAME%'
+      smart: true
+      template_path: ''
+    pkg_path: '%pkg_path%'
+    policy_category: '%SELFSERVPOLICYBETA_CATEGORY%'
+    policy_template: '%SELFSERVPOLICYBETA_TEMPLATE%'
+    prod_name: '%NAME%'
+    self_service_description: '%SELF_SERVICE_DESCRIPTION%'
+    self_service_icon: '%SELF_SERVICE_ICON%'
+    version: '%version%'
+  Comment: Self Service install policy for testers only, group is nulled 
+  Processor: JSSImporter
