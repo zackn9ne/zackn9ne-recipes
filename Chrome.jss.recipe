@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Identifier</key>
+	<string>local.jss.AU-Google Chrome</string>
+	<key>Input</key>
+	<dict>
+		<key>CATEGORY</key>
+		<string>Autopkg</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg</string>
+		<key>GROUP_NAME</key>
+		<string>Update-Smart-%NAME%</string>
+		<key>GROUP_TEMPLATE</key>
+		<string>%RECIPE_DIR%/SmartGroupTemplateAutopatch.xml</string>
+		<key>NAME</key>
+		<string>Google Chrome</string>
+		<key>OS_REQUIREMENTS</key>
+		<string>10.15.x,10.14.x,10.13.x,10.12.x,10.11.x,10.10.x</string>
+		<key>POLICY_CATEGORY</key>
+		<string>Autopkg</string>
+		<key>POLICY_TEMPLATE</key>
+		<string>%RECIPE_DIR%/PolicyTemplateAutopatch2.xml</string>
+		<key>SOFTWARETITLE</key>
+		<string>Chrome</string>
+		<key>SELF_SERVICE_DESCRIPTION</key>
+		<string>Google Chrome is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.</string>
+		<key>SELF_SERVICE_ICON</key>
+		<string>Google Chrome.png</string>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.jss-recipes.jss.GoogleChrome</string>
+	<key>ParentRecipeTrustInfo</key>
+	<dict>
+		<key>non_core_processors</key>
+		<dict/>
+		<key>parent_recipes</key>
+		<dict>
+			<key>com.github.autopkg.download.googlechrome</key>
+			<dict>
+				<key>git_hash</key>
+				<string>1d8ed0662d02653b32d0c34f041df521a1c551aa</string>
+				<key>path</key>
+				<string>~/Library/AutoPkg/RecipeRepos/com.github.autopkg.recipes/GoogleChrome/GoogleChrome.download.recipe</string>
+				<key>sha256_hash</key>
+				<string>f5313754f89bbff7c7d71dd99fa5151b67ff75cf21a00b0ce215c415b0c09549</string>
+			</dict>
+			<key>com.github.autopkg.pkg.googlechrome</key>
+			<dict>
+				<key>git_hash</key>
+				<string>f29f399c54adee7122e9fdc3c1ea7ed4c67388a4</string>
+				<key>path</key>
+				<string>~/Library/AutoPkg/RecipeRepos/com.github.autopkg.recipes/GoogleChrome/GoogleChrome.pkg.recipe</string>
+				<key>sha256_hash</key>
+				<string>5acdf716353ccc57f021008bc5b4b55a5cb4e578e0f96864b71d4d2d29742ec8</string>
+			</dict>
+			<key>com.github.jss-recipes.jss.GoogleChrome</key>
+			<dict>
+				<key>git_hash</key>
+				<string>389a1c716478559599f78ea873c6e60fb98e6394</string>
+				<key>path</key>
+				<string>~/Library/AutoPkg/RecipeRepos/com.github.autopkg.jss-recipes/Google Chrome/Google Chrome.jss.recipe</string>
+				<key>sha256_hash</key>
+				<string>9b6beecfdd541ddd09bb62c7041b36171df28690c57b38719423c41c54882077</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

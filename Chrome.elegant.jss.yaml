@@ -1,26 +1,24 @@
-Description: Downloads the latest version of Slack and makes a pkg of it Then, uploads to the Jamf Pro Server.
-Identifier: com.github.killahquam.jss.slack
+Identifier: local.jss.Google Chrome
 Input:
   BETA_GROUP_NAME: update-smart-%NAME%-beta
   BETA_GROUP_TEMPLATE: '%RECIPE_DIR%/SmartGroupTemplateBetapatch.xml'
   CATEGORY: Autopkg
-  GROUP_NAME: update-smart-%NAME%
-  GROUP_TEMPLATE: SmartGroupTemplateAutopatch.xml
-  NAME: Slack
+  DOWNLOAD_URL: https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+  GROUP_NAME: Update-Smart-%NAME%
+  GROUP_TEMPLATE: '%RECIPE_DIR%/SmartGroupTemplateAutopatch.xml'
+  NAME: Google Chrome
+  OS_REQUIREMENTS: 10.15.x,10.14.x,10.13.x,10.12.x,10.11.x,10.10.x
   POLICY_CATEGORY: Autopkg
-  PROD_NAME: '%NAME%'
   POLICY_TEMPLATE: '%RECIPE_DIR%/PolicyTemplateAutopatch2.xml'
-  SELFSERVPOLICY_CATEGORY: '*Updates for You*'
-  SELFSERVPOLICY_TEMPLATE: '%RECIPE_DIR%/PolicyTemplateSelfServe.all.xml'
+  SELFSERVPOLICY_CATEGORY: 'Misc. Apps'
+  SELFSERVPOLICY_TEMPLATE: '%RECIPE_DIR%/PolicyTemplateSelfServe.flex.xml'
   SELFSERVPOLICYBETA_CATEGORY: '*Updates For Testers*'
   SELFSERVPOLICYBETA_TEMPLATE: '%RECIPE_DIR%/PolicyTemplateSelfServe.beta.xml'
-  SELF_SERVICE_DESCRIPTION: ''
-  SELF_SERVICE_ICON: Slack.png
-  SOFTWARETITLE: '%NAME%'
-  MESSAGE_START: '%SOFTWARETITLE% update initiated'
-  MESSAGE_FINISH: 'Quit then Reopen %SOFTWARETITLE% to apply update'
-MinimumVersion: 0.2.0
-ParentRecipe: com.github.killahquam.pkg.slack
+  SELF_SERVICE_DESCRIPTION: Google Chrome is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.
+  SELF_SERVICE_ICON: Google Chrome.png
+  SOFTWARETITLE: Chrome
+MinimumVersion: 1.0.4
+ParentRecipe: com.github.autopkg.pkg.googlechrome
 Process:
 - Arguments:
     category: '%CATEGORY%'
